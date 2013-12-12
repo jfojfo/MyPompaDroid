@@ -6,9 +6,13 @@ LOCAL_MODULE := cocos2dcpp_shared
 
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
-LOCAL_SRC_FILES := hellocpp/main.cpp \
-                   ../../Classes/AppDelegate.cpp \
-                   ../../Classes/HelloWorldScene.cpp
+#LOCAL_SRC_FILES := hellocpp/main.cpp \
+#                   ../../Classes/AppDelegate.cpp \
+#                   ../../Classes/HelloWorldScene.cpp
+MY_CPP_LIST := hellocpp/main.cpp
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/../../Classes/*.cpp)
+LOCAL_SRC_FILES := $(MY_CPP_LIST:$(LOCAL_PATH)/%=%)
+
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 
